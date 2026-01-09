@@ -1,6 +1,6 @@
-import { test as base, expect } from "@playwright/test";
-import { RegisterPage } from "./pages/auth/RegisterPage";
-import { generateUser, type UserData } from "./utils/data-generator";
+import { test as base, expect } from '@playwright/test';
+import { RegisterPage } from './pages/auth/RegisterPage';
+import { generateUser, type UserData } from './utils/data-generator';
 
 type MyFixtures = {
   userData: UserData;

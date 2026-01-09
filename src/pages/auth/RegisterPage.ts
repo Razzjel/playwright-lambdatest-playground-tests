@@ -1,4 +1,4 @@
-import { type Page, type Locator, expect } from "@playwright/test";
+import { type Page, type Locator } from '@playwright/test';
 
 export interface RegisterUserData {
   firstname: string;
@@ -11,7 +11,7 @@ export interface RegisterUserData {
 
 export class RegisterPage {
   private readonly page: Page;
-  private readonly url: string = "/index.php?route=account/register";
+  private readonly url: string = '/index.php?route=account/register';
 
   private readonly firstnameInput: Locator;
   private readonly lastnameInput: Locator;
@@ -26,20 +26,16 @@ export class RegisterPage {
   constructor(page: Page) {
     this.page = page;
 
-    this.firstnameInput = page.getByRole("textbox", { name: "First Name" });
-    this.lastnameInput = page.getByRole("textbox", { name: "Last Name" });
-    this.emailInput = page.getByRole("textbox", { name: "E-Mail" });
-    this.telephoneInput = page.getByRole("textbox", { name: "Telephone" });
-    this.passwordInput = page.locator(
-      '#input-password, input[name="password"]',
-    );
-    this.passwordConfirmInput = page.locator(
-      '#input-confirm, input[name="confirm"]',
-    );
+    this.firstnameInput = page.getByRole('textbox', { name: 'First Name' });
+    this.lastnameInput = page.getByRole('textbox', { name: 'Last Name' });
+    this.emailInput = page.getByRole('textbox', { name: 'E-Mail' });
+    this.telephoneInput = page.getByRole('textbox', { name: 'Telephone' });
+    this.passwordInput = page.locator('#input-password, input[name="password"]');
+    this.passwordConfirmInput = page.locator('#input-confirm, input[name="confirm"]');
 
-    this.privacyPolicyCheckbox = page.getByRole("checkbox", { name: "agree" });
+    this.privacyPolicyCheckbox = page.getByRole('checkbox', { name: 'agree' });
 
-    this.submitButton = page.getByRole("button", { name: "Continue" });
+    this.submitButton = page.getByRole('button', { name: 'Continue' });
 
     this.errorMessage = page.locator('.error-message, [role="alert"]');
   }
@@ -68,11 +64,12 @@ export class RegisterPage {
   async submit() {
     await this.submitButton.click();
   }
-
+  /*
   async getValidationMessage(): Promise<string | null> {
     if (await this.errorMessage.isVisible()) {
       return await this.errorMessage.textContent();
     }
     return null;
   }
+*/
 }
